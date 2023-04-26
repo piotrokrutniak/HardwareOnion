@@ -1,5 +1,4 @@
 ﻿using Application.Interfaces.Repositories;
-using Domain.Entities;
 using Infrastructure.Persistence.Contexts;
 using Infrastructure.Persistence.Repository;
 using System;
@@ -7,6 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Domain.Models.Products;
 
 namespace Infrastructure.Persistence.Repositories
 {
@@ -18,11 +18,12 @@ namespace Infrastructure.Persistence.Repositories
         {
             _products = dbContext.Set<Product>();
         }
-
+        /*
         public Task<bool> IsUniqueBarcodeAsync(string barcode)
         {
             return _products
                 .AllAsync(p => p.Barcode != barcode);
         }
+        */
     }
 }

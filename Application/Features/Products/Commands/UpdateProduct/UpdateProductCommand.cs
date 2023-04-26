@@ -34,7 +34,7 @@ namespace Application.Features.Products.Commands.UpdateProduct
                 else
                 {
                     product.Name = command.Name;
-                    product.Rate = command.Rate;
+                    product.Price = command.Rate;
                     product.Description = command.Description;
                     await _productRepository.UpdateAsync(product);
                     return new Response<int>(product.Id);

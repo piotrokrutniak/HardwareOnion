@@ -1,7 +1,7 @@
 ﻿using Application.Interfaces.Repositories;
 using Application.Wrappers;
 using AutoMapper;
-using Domain.Entities;
+using Domain.Models.Products;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;

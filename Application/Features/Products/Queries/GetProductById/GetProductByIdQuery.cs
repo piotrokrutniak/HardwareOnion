@@ -1,7 +1,7 @@
 ﻿using Application.Exceptions;
 using Application.Interfaces.Repositories;
 using Application.Wrappers;
-using Domain.Entities;
+using Domain.Models.Products;
 using MediatR;
 using System;
 using System.Collections.Generic;

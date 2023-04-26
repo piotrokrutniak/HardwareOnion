@@ -1,4 +1,4 @@
-﻿using Domain.Entities;
+﻿using Domain.Models.Products;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,6 +8,8 @@ namespace Application.Interfaces.Repositories
 {
     public interface IProductRepositoryAsync : IGenericRepositoryAsync<Product>
     {
+        /*
         Task<bool> IsUniqueBarcodeAsync(string barcode);
+        */
     }
 }

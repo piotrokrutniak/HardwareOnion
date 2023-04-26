@@ -1,7 +1,7 @@
 ﻿using Application.Features.Products.Commands.CreateProduct;
 using Application.Features.Products.Queries.GetAllProducts;
 using AutoMapper;
-using Domain.Entities;
+using Domain.Models.Products;
 using System;
 using System.Collections.Generic;
 using System.Text;

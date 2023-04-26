@@ -1,5 +1,5 @@
 ﻿using Application.Interfaces.Repositories;
-using Domain.Entities;
+using Domain.Models;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore.Internal;
 using System;
@@ -22,8 +22,8 @@ namespace Application.Features.Products.Commands.CreateProduct
             RuleFor(p => p.Barcode)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
                 .NotNull()
-                .MaximumLength(50).WithMessage("{PropertyName} must not exceed 50 characters.")
-                .MustAsync(IsUniqueBarcode).WithMessage("{PropertyName} already exists.");
+                .MaximumLength(50).WithMessage("{PropertyName} must not exceed 50 characters.");
+                //.MustAsync(IsUniqueBarcode).WithMessage("{PropertyName} already exists.");
 
             RuleFor(p => p.Name)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
@@ -31,10 +31,11 @@ namespace Application.Features.Products.Commands.CreateProduct
                 .MaximumLength(50).WithMessage("{PropertyName} must not exceed 50 characters.");
                 
         }
-
+        /*
         private async Task<bool> IsUniqueBarcode(string barcode, CancellationToken cancellationToken)
         {
             return await productRepository.IsUniqueBarcodeAsync(barcode);
         }
+        */
     }
 }

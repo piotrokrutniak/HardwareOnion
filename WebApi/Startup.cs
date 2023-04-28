@@ -1,5 +1,6 @@
 using Application;
 using Application.Interfaces;
+using Application.Interfaces.Repositories;
 using Infrastructure.Identity;
 using Infrastructure.Persistence;
 using Infrastructure.Shared;

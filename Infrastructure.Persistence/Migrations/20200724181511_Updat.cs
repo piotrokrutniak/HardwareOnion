@@ -20,7 +20,7 @@ namespace Infrastructure.Persistence.Migrations
                     Name = table.Column<string>(nullable: true),
                     Barcode = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
-                    Rate = table.Column<decimal>(type: "decimal(18,6)", nullable: false)
+                    Rate = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {

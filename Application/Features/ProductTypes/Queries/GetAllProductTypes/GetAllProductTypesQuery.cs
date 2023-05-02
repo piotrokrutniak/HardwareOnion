@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.Features.Products.Queries.GetAllProductTypes
+namespace Application.Features.ProductTypes.Queries.GetAllProductTypes
 {
     public class GetAllProductTypesQuery : IRequest<PagedResponse<IEnumerable<GetAllProductTypesViewModel>>>
     {

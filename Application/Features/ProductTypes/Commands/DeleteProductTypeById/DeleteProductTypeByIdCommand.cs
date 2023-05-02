@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.Features.Products.Commands.DeleteProductTypeById
+namespace Application.Features.ProductTypes.Commands.DeleteProductTypeById
 {
     public class DeleteProductTypeByIdCommand : IRequest<Response<int>>
     {

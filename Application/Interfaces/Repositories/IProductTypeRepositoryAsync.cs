@@ -8,8 +8,5 @@ namespace Application.Interfaces.Repositories
 {
     public interface IProductTypeRepositoryAsync : IGenericRepositoryAsync<ProductType>
     {
-        /*
-        Task<bool> IsUniqueBarcodeAsync(string barcode);
-        */
     }
 }

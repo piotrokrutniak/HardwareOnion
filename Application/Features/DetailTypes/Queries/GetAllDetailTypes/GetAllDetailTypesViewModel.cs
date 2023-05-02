@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Application.Features.ProductTypes.Queries.GetAllProductTypes
+namespace Application.Features.DetailTypes.Queries.GetAllDetailTypes
 {
-    public class GetAllProductTypesViewModel
+    public class GetAllDetailTypesViewModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string DetailStyle { get; set; }
     }
 }

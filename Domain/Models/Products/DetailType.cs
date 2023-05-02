@@ -8,7 +8,6 @@ namespace Domain.Models.Products
     public class DetailType : AuditableBaseEntity
     {
         public string Name { get; set; }
-        public string Description { get; set; }
         public string DetailStyle { get; set; }
     }
 }

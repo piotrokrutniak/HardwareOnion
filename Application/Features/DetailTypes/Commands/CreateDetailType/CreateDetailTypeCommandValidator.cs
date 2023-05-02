@@ -1,4 +1,5 @@
-﻿using Application.Interfaces.Repositories;
+﻿using Application.Features.DetailTypes.Commands.CreateDetailType;
+using Application.Interfaces.Repositories;
 using Application.Wrappers;
 using AutoMapper;
 using Domain.Models;
@@ -13,26 +14,30 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.Features.ProductTypes.Commands.CreateProductType
+namespace Application.Features.DetailTypes.Commands.CreateDetailType
 {
-    public class CreateProductTypeCommandValidator : AbstractValidator<CreateProductTypeCommand>
+    public class CreateDetailTypeCommandValidator : AbstractValidator<CreateDetailTypeCommand>
     {
-        private readonly IProductTypeRepositoryAsync productRepository;
+        private readonly IDetailTypeRepositoryAsync detailTypeRepository;
 
-        public CreateProductTypeCommandValidator(IProductTypeRepositoryAsync productRepository)
+        public CreateDetailTypeCommandValidator(IDetailTypeRepositoryAsync detailTypeRepository)
         {
-            this.productRepository = productRepository;
+            this.detailTypeRepository = detailTypeRepository;
 
             RuleFor(p => p.Name)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
                 .NotNull()
-                .MaximumLength(50).WithMessage("{PropertyName} must not exceed 50 characters.")
+                .MaximumLength(20).WithMessage("{PropertyName} must not exceed 20 characters.")
                 .MustAsync(IsUnique).WithMessage("{PropertyName} already exists.");
+            RuleFor(p => p.DetailStyle)
+                .NotEmpty().WithMessage("{PropertyName} is required.")
+                .NotNull()
+                .MaximumLength(20).WithMessage("{PropertyName} must not exceed 30 characters.");
         }
 
         private async Task<bool> IsUnique(string name, CancellationToken cancellationToken)
         {
-            var types = await productRepository.GetAllAsync();
+            var types = await detailTypeRepository.GetAllAsync();
 
             bool typeUnique = false;
 

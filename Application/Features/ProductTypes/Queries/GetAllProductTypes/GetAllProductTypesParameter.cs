@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Application.Features.Products.Queries.GetAllProductTypes
+namespace Application.Features.ProductTypes.Queries.GetAllProductTypes
 {
     public class GetAllProductTypesParameter : RequestParameter
     {

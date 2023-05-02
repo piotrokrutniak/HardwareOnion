@@ -1,6 +1,6 @@
 ﻿using Application.Features.Products.Commands.CreateProduct;
 using Application.Features.Products.Queries.GetAllProducts;
-using Application.Features.Products.Queries.GetAllProductTypes;
+using Application.Features.ProductTypes.Queries.GetAllProductTypes;
 using Application.Features.ProductTypes.Commands.CreateProductType;
 using AutoMapper;
 using Domain.Models.Products;

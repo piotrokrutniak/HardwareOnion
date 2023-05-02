@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application.Interfaces.Repositories
 {
-    public interface IProductRepositoryAsync : IGenericRepositoryAsync<Product>
+    public interface IDetailTypeRepositoryAsync : IGenericRepositoryAsync<DetailType>
     {
     }
 }

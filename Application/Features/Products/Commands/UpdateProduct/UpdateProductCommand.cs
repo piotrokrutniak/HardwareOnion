@@ -15,7 +15,10 @@ namespace Application.Features.Products.Commands.UpdateProduct
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public decimal Rate { get; set; }
+        public decimal Price { get; set; }
+        public int Quantity { get; set; }
+        public int ProductTypeId { get; set; }
+        public int ManufacturerId { get; set; }
         public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand, Response<int>>
         {
             private readonly IProductRepositoryAsync _productRepository;
@@ -34,8 +37,12 @@ namespace Application.Features.Products.Commands.UpdateProduct
                 else
                 {
                     product.Name = command.Name;
-                    product.Price = command.Rate;
                     product.Description = command.Description;
+                    product.Price = command.Price;
+                    product.Quantity = command.Quantity;
+                    product.ProductTypeId = command.ProductTypeId;
+                    product.ManufacturerId = command.ManufacturerId;
+
                     await _productRepository.UpdateAsync(product);
                     return new Response<int>(product.Id);
                 }

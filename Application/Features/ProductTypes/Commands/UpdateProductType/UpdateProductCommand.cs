@@ -15,8 +15,6 @@ namespace Application.Features.ProductTypes.Commands.UpdateProductType
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }
-        public decimal Rate { get; set; }
         public class UpdateProductTypeCommandHandler : IRequestHandler<UpdateProductTypeCommand, Response<int>>
         {
             private readonly IProductTypeRepositoryAsync _productTypeRepository;

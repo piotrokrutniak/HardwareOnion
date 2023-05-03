@@ -7,6 +7,8 @@ using Domain.Models.Products;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Application.Features.DetailTypes.Commands.CreateDetailType;
+using Application.Features.DetailTypes.Queries.GetAllDetailTypes;
 
 namespace Application.Mappings
 {
@@ -21,7 +23,11 @@ namespace Application.Mappings
             CreateMap<ProductType, GetAllProductTypesViewModel>().ReverseMap();
             CreateMap<CreateProductTypeCommand, ProductType>();
             CreateMap<GetAllProductTypesQuery, GetAllProductTypesParameter>();
-            
+
+            CreateMap<DetailType, GetAllDetailTypesViewModel>().ReverseMap();
+            CreateMap<CreateDetailTypeCommand, DetailType>();
+            CreateMap<GetAllDetailTypesQuery, GetAllProductTypesParameter>();
+
         }
     }
 }

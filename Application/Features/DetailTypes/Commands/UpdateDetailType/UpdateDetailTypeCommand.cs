@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.Features.DetailTypes.Commands.UpdateProductType
+namespace Application.Features.DetailTypes.Commands.UpdateDetailType
 
 {
     public class UpdateDetailTypeCommand : IRequest<Response<int>>

@@ -8,5 +8,6 @@ namespace Application.Features.ProductTypes.Queries.GetAllProductTypes
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public DateTime Created { get; set; }
     }
 }

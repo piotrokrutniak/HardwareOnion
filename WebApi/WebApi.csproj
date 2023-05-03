@@ -10,7 +10,7 @@
     <Version>1.1.0</Version>
 	<LangVersion>latest</LangVersion>
 	<UserSecretsId>89de7238-a172-496f-a17a-0692ca055543</UserSecretsId>
-	<DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+	<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

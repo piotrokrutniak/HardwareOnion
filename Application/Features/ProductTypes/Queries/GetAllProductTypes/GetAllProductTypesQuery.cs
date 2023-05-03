@@ -19,18 +19,18 @@ namespace Application.Features.ProductTypes.Queries.GetAllProductTypes
     }
     public class GGetAllProductTypesQueryHandler : IRequestHandler<GetAllProductTypesQuery, PagedResponse<IEnumerable<GetAllProductTypesViewModel>>>
     {
-        private readonly IProductRepositoryAsync _productRepository;
+        private readonly IProductTypeRepositoryAsync _productTypeRepository;
         private readonly IMapper _mapper;
-        public GGetAllProductTypesQueryHandler(IProductRepositoryAsync productRepository, IMapper mapper)
+        public GGetAllProductTypesQueryHandler(IProductTypeRepositoryAsync productTypeRepository, IMapper mapper)
         {
-            _productRepository = productRepository;
+            _productTypeRepository = productTypeRepository;
             _mapper = mapper;
         }
 
         public async Task<PagedResponse<IEnumerable<GetAllProductTypesViewModel>>> Handle(GetAllProductTypesQuery request, CancellationToken cancellationToken)
         {
             var validFilter = _mapper.Map<GetAllProductTypesParameter>(request);
-            var product = await _productRepository.GetPagedReponseAsync(validFilter.PageNumber,validFilter.PageSize);
+            var product = await _productTypeRepository.GetPagedReponseAsync(validFilter.PageNumber,validFilter.PageSize);
             var productViewModel = _mapper.Map<IEnumerable<GetAllProductTypesViewModel>>(product);
             return new PagedResponse<IEnumerable<GetAllProductTypesViewModel>>(productViewModel, validFilter.PageNumber, validFilter.PageSize);           
         }

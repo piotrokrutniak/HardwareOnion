@@ -12,6 +12,8 @@ using Application.Features.DetailTypes.Queries.GetAllDetailTypes;
 using Domain.Models.Entities;
 using Application.Features.Manufacturers.Queries.GetAllManufacturers;
 using Application.Features.Manufacturers.Commands.CreateManufacturer;
+using Application.Features.ProductDetails.Queries.GetAllProductDetails;
+using Application.Features.ProductDetails.Commands.CreateProductDetail;
 
 namespace Application.Mappings
 {
@@ -33,8 +35,11 @@ namespace Application.Mappings
             
             CreateMap<Manufacturer, GetAllManufacturersViewModel>().ReverseMap();
             CreateMap<CreateManufacturerCommand, Manufacturer>();
-            CreateMap<GetAllManufacturersQuery, GetAllProductTypesParameter>();
+            CreateMap<GetAllManufacturersQuery, GetAllManufacturersParameter>();
 
+            CreateMap<ProductDetail, GetAllProductDetailsViewModel>().ReverseMap();
+            CreateMap<CreateProductDetailCommand, ProductDetail>();
+            CreateMap<GetAllProductDetailsQuery, GetAllProductDetailsParameter>();
         }
     }
 }

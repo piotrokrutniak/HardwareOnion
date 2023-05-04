@@ -11,17 +11,17 @@ using System.Threading.Tasks;
 
 namespace Application.Features.DetailTypes.Queries.GetDetailTypeById
 {
-    public class GetDetailTypeByIdQuery : IRequest<Response<DetailType>>
+    public class GetDetailTypesByIdQuery : IRequest<Response<DetailType>>
     {
         public int Id { get; set; }
-        public class GetDetailTypeByIdQueryHandler : IRequestHandler<GetDetailTypeByIdQuery, Response<DetailType>>
+        public class GetDetailTypeByIdQueryHandler : IRequestHandler<GetDetailTypesByIdQuery, Response<DetailType>>
         {
             private readonly IDetailTypeRepositoryAsync _detailTypeRepository;
             public GetDetailTypeByIdQueryHandler(IDetailTypeRepositoryAsync detailTypeRepository)
             {
                 _detailTypeRepository = detailTypeRepository;
             }
-            public async Task<Response<DetailType>> Handle(GetDetailTypeByIdQuery query, CancellationToken cancellationToken)
+            public async Task<Response<DetailType>> Handle(GetDetailTypesByIdQuery query, CancellationToken cancellationToken)
             {
                 var detailType = await _detailTypeRepository.GetByIdAsync(query.Id);
                 if (detailType == null) throw new ApiException($"Detail Type Not Found.");

@@ -5,39 +5,39 @@ using System.Threading.Tasks;
 using Application.Filters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Application.Features.DetailTypes.Commands.DeleteDetailTypeById;
-using Application.Features.DetailTypes.Queries.GetAllDetailTypes;
-using Application.Features.DetailTypes.Queries.GetDetailTypeById;
-using Application.Features.DetailTypes.Commands.CreateDetailType;
-using Application.Features.DetailTypes.Commands.UpdateDetailType;
+using Application.Features.ProductDetails.Commands.DeleteProductDetailById;
+using Application.Features.ProductDetails.Queries.GetAllProductDetails;
+using Application.Features.ProductDetails.Queries.GetProductDetailById;
+using Application.Features.ProductDetails.Commands.CreateProductDetail;
+using Application.Features.ProductDetails.Commands.UpdateProductDetail;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace WebApi.Controllers.v1
 {
     [ApiVersion("1.0")]
-    public class DetailTypeController : BaseApiController
+    public class ProductDetailController : BaseApiController
     {
         // GET: api/<controller>
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] GetAllDetailTypesParameter filter)
+        public async Task<IActionResult> Get([FromQuery] GetAllProductDetailsParameter filter)
         {
           
-            return Ok(await Mediator.Send(new GetAllDetailTypesQuery() { PageSize = filter.PageSize, PageNumber = filter.PageNumber  }));
+            return Ok(await Mediator.Send(new GetAllProductDetailsQuery() { PageSize = filter.PageSize, PageNumber = filter.PageNumber  }));
         }
 
         // GET api/<controller>/5
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            return Ok(await Mediator.Send(new GetDetailTypesByIdQuery { Id = id }));
+            return Ok(await Mediator.Send(new GetProductDetailsByIdQuery { Id = id }));
         }
 
         // POST api/<controller>
         [HttpPost]
         //[Authorize(Roles= "Moderator,SuperAdmin,Admin")]
         [Authorize]
-        public async Task<IActionResult> Post(CreateDetailTypeCommand command)
+        public async Task<IActionResult> Post(CreateProductDetailCommand command)
         {
             return Ok(await Mediator.Send(command));
         }   
@@ -45,7 +45,7 @@ namespace WebApi.Controllers.v1
         // PUT api/<controller>/5
         [HttpPut("{id}")]
         [Authorize]
-        public async Task<IActionResult> Put(int id, UpdateDetailTypeCommand command)
+        public async Task<IActionResult> Put(int id, UpdateProductDetailCommand command)
         {
             if (id != command.Id)
             {
@@ -59,7 +59,7 @@ namespace WebApi.Controllers.v1
         [Authorize]
         public async Task<IActionResult> Delete(int id)
         {
-            return Ok(await Mediator.Send(new DeleteDetailTypeByIdCommand { Id = id }));
+            return Ok(await Mediator.Send(new DeleteProductDetailByIdCommand { Id = id }));
         }
     }
 }

@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{8BC3FB7C-65EB-46CB-972F-1C158B9EFE1F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Persistence.CommerceService", "Infrastructure.Persistence\Infrastructure.Persistence.CommerceService.csproj", "{C772A90E-F5CA-4D58-977D-574C93F8AF3F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Persistence", "Infrastructure.Persistence\Infrastructure.Persistence.csproj", "{C772A90E-F5CA-4D58-977D-574C93F8AF3F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Identity", "Infrastructure.Identity\Infrastructure.Identity.csproj", "{876F2CD8-1519-419A-9402-7C8B856DBE7C}"
 EndProject

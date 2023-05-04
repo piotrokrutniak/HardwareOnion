@@ -18,10 +18,10 @@ namespace Application.Features.DetailTypes.Commands.UpdateDetailType
         public int Id { get; set; }
         public string Name { get; set; }
         public string DetailStyle { get; set; }
-        public class UpdateProductTypeCommandHandler : IRequestHandler<UpdateDetailTypeCommand, Response<int>>
+        public class UpdateDetailTypeCommandHandler : IRequestHandler<UpdateDetailTypeCommand, Response<int>>
         {
             private readonly IDetailTypeRepositoryAsync _detailTypeRepository;
-            public UpdateProductTypeCommandHandler(IDetailTypeRepositoryAsync detailTypeRepository)
+            public UpdateDetailTypeCommandHandler(IDetailTypeRepositoryAsync detailTypeRepository)
             {
                 _detailTypeRepository = detailTypeRepository;
             }

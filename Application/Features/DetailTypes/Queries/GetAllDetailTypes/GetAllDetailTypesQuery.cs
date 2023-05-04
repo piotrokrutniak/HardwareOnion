@@ -17,11 +17,11 @@ namespace Application.Features.DetailTypes.Queries.GetAllDetailTypes
         public int PageNumber { get; set; }
         public int PageSize { get; set; }
     }
-    public class GGetAllDetailTypesQueryHandler : IRequestHandler<GetAllDetailTypesQuery, PagedResponse<IEnumerable<GetAllDetailTypesViewModel>>>
+    public class GetAllDetailTypesQueryHandler : IRequestHandler<GetAllDetailTypesQuery, PagedResponse<IEnumerable<GetAllDetailTypesViewModel>>>
     {
         private readonly IDetailTypeRepositoryAsync _detailTypeRepository;
         private readonly IMapper _mapper;
-        public GGetAllDetailTypesQueryHandler(IDetailTypeRepositoryAsync detailTypeRepository, IMapper mapper)
+        public GetAllDetailTypesQueryHandler(IDetailTypeRepositoryAsync detailTypeRepository, IMapper mapper)
         {
             _detailTypeRepository = detailTypeRepository;
             _mapper = mapper;

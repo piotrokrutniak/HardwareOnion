@@ -2,14 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Application.Features.Products.Commands;
-using Application.Features.Products.Commands.CreateProduct;
-using Application.Features.Products.Commands.DeleteProductById;
 using Application.Features.ProductTypes.Commands.DeleteProductTypeById;
-using Application.Features.Products.Commands.UpdateProduct;
-using Application.Features.Products.Queries.GetAllProducts;
 using Application.Features.ProductTypes.Queries.GetAllProductTypes;
-using Application.Features.Products.Queries.GetProductById;
 using Application.Features.ProductTypes.Commands.CreateProductType;
 using Application.Features.ProductTypes.Commands.UpdateProductType;
 using Application.Features.ProductTypes.Queries.GetProductTypeById;
@@ -41,7 +35,7 @@ namespace WebApi.Controllers.v1
 
         // POST api/<controller>
         [HttpPost]
-        //[Authorize(Roles= "Moderator,SuperAdmin,Admin")]
+        //[Authorize(Roles = "Moderator,SuperAdmin,Admin")]
         [Authorize]
         public async Task<IActionResult> Post(CreateProductTypeCommand command)
         {

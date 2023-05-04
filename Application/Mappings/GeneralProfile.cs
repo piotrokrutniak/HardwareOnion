@@ -9,6 +9,9 @@ using System.Collections.Generic;
 using System.Text;
 using Application.Features.DetailTypes.Commands.CreateDetailType;
 using Application.Features.DetailTypes.Queries.GetAllDetailTypes;
+using Domain.Models.Entities;
+using Application.Features.Manufacturers.Queries.GetAllManufacturers;
+using Application.Features.Manufacturers.Commands.CreateManufacturer;
 
 namespace Application.Mappings
 {
@@ -26,7 +29,11 @@ namespace Application.Mappings
 
             CreateMap<DetailType, GetAllDetailTypesViewModel>().ReverseMap();
             CreateMap<CreateDetailTypeCommand, DetailType>();
-            CreateMap<GetAllDetailTypesQuery, GetAllProductTypesParameter>();
+            CreateMap<GetAllDetailTypesQuery, GetAllDetailTypesParameter>();
+            
+            CreateMap<Manufacturer, GetAllManufacturersViewModel>().ReverseMap();
+            CreateMap<CreateManufacturerCommand, Manufacturer>();
+            CreateMap<GetAllManufacturersQuery, GetAllProductTypesParameter>();
 
         }
     }

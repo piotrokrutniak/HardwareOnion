@@ -33,6 +33,7 @@ namespace Infrastructure.Persistence
             services.AddTransient<IProductRepositoryAsync, ProductRepositoryAsync>();
             services.AddTransient<IProductTypeRepositoryAsync, ProductTypeRepositoryAsync>();
             services.AddTransient<IDetailTypeRepositoryAsync, DetailTypeRepositoryAsync>();
+            services.AddTransient<IManufacturerRepositoryAsync, ManufacturerRepositoryAsync>();
             #endregion
         }
     }

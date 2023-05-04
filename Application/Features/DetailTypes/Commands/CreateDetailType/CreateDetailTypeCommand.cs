@@ -13,11 +13,11 @@ namespace Application.Features.DetailTypes.Commands.CreateDetailType
         public string Name { get; set; }
         public string DetailStyle { get; set; }
     }
-    public class CreateDetailtTypeCommandHandler : IRequestHandler<CreateDetailTypeCommand, Response<int>>
+    public class CreateDetailTypeCommandHandler : IRequestHandler<CreateDetailTypeCommand, Response<int>>
     {
         private readonly IDetailTypeRepositoryAsync _detailTypeRepository;
         private readonly IMapper _mapper;
-        public CreateDetailtTypeCommandHandler(IDetailTypeRepositoryAsync detailTypeRepository, IMapper mapper)
+        public CreateDetailTypeCommandHandler(IDetailTypeRepositoryAsync detailTypeRepository, IMapper mapper)
         {
             _detailTypeRepository = detailTypeRepository;
             _mapper = mapper;

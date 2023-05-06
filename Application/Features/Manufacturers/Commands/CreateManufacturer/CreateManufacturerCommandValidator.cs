@@ -39,7 +39,7 @@ namespace Application.Features.Manufacturers.Commands.CreateManufacturer
 
             if (types.Any())
             {
-                typeUnique = types.SingleOrDefault().Name.Equals(name);
+                typeUnique = types.FirstOrDefault().Name.Equals(name);
             }
 
             return await Task.FromResult(!typeUnique);

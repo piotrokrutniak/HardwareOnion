@@ -20,6 +20,7 @@ using System.Threading.Tasks;
 /// Startup project: WebApi
 /// dotnet ef migrations add initial -c ApplicationDbContext -s WebApi --project Infrastructure.Persistence
 /// dotnet ef migrations add initial -c ApplicationDbContext // wrong possibly
+/// dotnet ef database update -c IdentityContext --project WebApi
 /// dotnet ef database update -c ApplicationDbContext --project WebApi
 ////////////////////////////////////////////////////////////
 

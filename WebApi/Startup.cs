@@ -1,6 +1,7 @@
 using Application;
 using Application.Interfaces;
 using Application.Interfaces.Repositories;
+using Google.Apis.Services;
 using Infrastructure.Identity;
 using Infrastructure.Persistence;
 using Infrastructure.Shared;
@@ -32,6 +33,8 @@ namespace WebApi
             services.AddApiVersioningExtension();
             services.AddHealthChecks();
             services.AddScoped<IAuthenticatedUserService, AuthenticatedUserService>();
+            services.AddSingleton<IUploadImageService, UploadImageService>();
+            //services.AddSingleton<IClientService, UploadImageService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

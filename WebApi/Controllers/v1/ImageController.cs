@@ -29,7 +29,7 @@ namespace WebApi.Controllers.v1
         // POST api/<controller>
         [HttpPost]
         //[Authorize(Roles= "Moderator,SuperAdmin,Admin")]
-        [Authorize]
+        //[Authorize]
         public async Task<IActionResult> Post([FromForm] CreateImageCommand command)
         {
             return Ok(await Mediator.Send(command));

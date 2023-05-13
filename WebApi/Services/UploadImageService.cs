@@ -2,13 +2,14 @@
 using Application.Interfaces;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Drive.v3;
+using Google.Apis.Drive.v3.Data;
 using Google.Apis.Services;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
-
+using DriveFile = Google.Apis.Drive.v3.Data.File;
 namespace WebApi.Services
 {
     public class UploadImageService : IUploadImageService
@@ -41,23 +42,47 @@ namespace WebApi.Services
         {
             try
             {
-                var fileMetadata = new Google.Apis.Drive.v3.Data.File()
+                DriveFile fileMetadata = new()
                 {
-                    Name = file.FileName
+                    Name = file.FileName,
+                    WritersCanShare = true,
                 };
+
+                Permission readable = new Permission()
+                {
+                    Type = "user",
+                    EmailAddress = "bdtrppn@gmail.com",
+                    Role = "reader"
+                };
+
+
+                //fileMetadata.Permissions.Add(readable);
 
                 var stream = file.OpenReadStream();
 
                 var request = driveService.Files.Create(fileMetadata, stream, "image/jpeg");
                 request.Fields = "id, webContentLink, webViewLink, name";
-                //await request.UploadAsync();
+
                 var exception = await request.UploadAsync();
                 string exceptionMessage;
+
                 if (exception.Exception != null)
                 {
                     exceptionMessage = exception.Exception.Message;
                 }
+
                 var response = request.ResponseBody;
+                var id = request.ResponseBody.Id;
+
+                var permissionRequest = driveService.Permissions.Create(readable, id);
+                await permissionRequest.ExecuteAsync();
+
+                ////
+                //// Direct image link template
+                //// https://drive.google.com/uc?export=view&id={id}
+                ////
+                ////
+
 
                 return response.WebViewLink;
             }
@@ -80,6 +105,16 @@ namespace WebApi.Services
             
             return null;
 
+        }
+
+        public async Task<string> GetImages(int pageSize)
+        {
+            var request = driveService.Files.List();
+            request.PageSize = pageSize;
+
+            var response = await request.ExecuteAsync();
+            
+            return response.Files.ToString();
         }
 
     }

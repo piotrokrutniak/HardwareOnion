@@ -9,5 +9,6 @@ namespace Application.Interfaces
     public interface IUploadImageService
     {
         Task<string> UploadImage(IFormFile file);
+        Task<string> GetImages(int pageSize);
     }
 }

@@ -3,6 +3,7 @@ using Domain.Common;
 using Domain.Models.Builds;
 using Domain.Models.Discounts;
 using Domain.Models.Entities;
+using Domain.Models.Images;
 using Domain.Models.Orders;
 using Domain.Models.Products;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +20,6 @@ using System.Threading.Tasks;
 /// PMC project: InfrastructureShared
 /// Startup project: WebApi
 /// dotnet ef migrations add initial -c ApplicationDbContext -s WebApi --project Infrastructure.Persistence
-/// dotnet ef migrations add initial -c ApplicationDbContext // wrong possibly
 /// dotnet ef database update -c ApplicationDbContext --project WebApi
 ////////////////////////////////////////////////////////////
 
@@ -52,6 +52,8 @@ namespace Infrastructure.Persistence.Contexts
         public DbSet<Manufacturer> Manufacturers { get; set; }
         public DbSet<Build> Builds { get; set; }
         public DbSet<BuildItem> BuildItems { get; set; }
+        public DbSet<Image> Images { get; set; }
+        //public DbSet<ImageAssignment> ImageAssignments { get; set; }
         public DbSet<DiscountCode> DiscountCodes { get; set; }
         public DbSet<ProductDiscount> ProductDiscounts { get; set; }
 
@@ -75,12 +77,12 @@ namespace Infrastructure.Persistence.Contexts
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            //All Decimals will have 18,6 Range
+            //All Decimals will have 18,2 Range
             foreach (var property in builder.Model.GetEntityTypes()
             .SelectMany(t => t.GetProperties())
             .Where(p => p.ClrType == typeof(decimal) || p.ClrType == typeof(decimal?)))
             {
-                property.SetColumnType("decimal(18,6)");
+                property.SetColumnType("decimal(18,2)");
             }
             base.OnModelCreating(builder);
         }

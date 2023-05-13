@@ -38,7 +38,6 @@ namespace Application.Features.Images.Commands
             public async Task<Response<int>> Handle(CreateImageCommand request, CancellationToken cancellationToken)
             {
                 var image = _mapper.Map<Image>(request);
-                await _uploadImageService.GetImages(10);
                 image.ImageUrl = await _uploadImageService.UploadImage(request.ImageFile);
 
                 await _imageRepository.AddAsync(image);

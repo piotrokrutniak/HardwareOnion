@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using System;
 using System.IO;
 using System.Net;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using DriveFile = Google.Apis.Drive.v3.Data.File;
 namespace WebApi.Services
@@ -27,9 +28,7 @@ namespace WebApi.Services
                                                  DriveService.Scope.DriveScripts
                 };
 
-            //Add credentials file from Google API to project base directory
             string directory = AppDomain.CurrentDomain.BaseDirectory + "credentials.json";
-            //Credentials = GoogleCredential.FromJson(File.ReadAllText(directory)).CreateScoped();
             Credentials = GoogleCredential.FromStream(new FileStream("credentials.json", FileMode.Open, FileAccess.Read)).CreateScoped(scopes);
             driveService = new DriveService(new BaseClientService.Initializer
             {
@@ -50,13 +49,9 @@ namespace WebApi.Services
 
                 Permission readable = new Permission()
                 {
-                    Type = "user",
-                    EmailAddress = "bdtrppn@gmail.com",
+                    Type = "anyone",
                     Role = "reader"
                 };
-
-
-                //fileMetadata.Permissions.Add(readable);
 
                 var stream = file.OpenReadStream();
 
@@ -64,14 +59,12 @@ namespace WebApi.Services
                 request.Fields = "id, webContentLink, webViewLink, name";
 
                 var exception = await request.UploadAsync();
-                string exceptionMessage;
 
                 if (exception.Exception != null)
                 {
-                    exceptionMessage = exception.Exception.Message;
+                    throw new ExternalException(exception.Exception.Message);
                 }
 
-                var response = request.ResponseBody;
                 var id = request.ResponseBody.Id;
 
                 var permissionRequest = driveService.Permissions.Create(readable, id);
@@ -81,10 +74,8 @@ namespace WebApi.Services
                 //// Direct image link template
                 //// https://drive.google.com/uc?export=view&id={id}
                 ////
-                ////
 
-
-                return response.WebViewLink;
+                return $"https://drive.google.com/uc?export=view&id={id}";
             }
             catch (Exception e)
             {
@@ -117,5 +108,12 @@ namespace WebApi.Services
             return response.Files.ToString();
         }
 
+        public async Task<bool> DeleteImage(string imageId)
+        {
+            var request = driveService.Files.Delete(imageId);
+            bool success = request.ExecuteAsync().IsCompletedSuccessfully;
+
+            return success;
+        }
     }
 }

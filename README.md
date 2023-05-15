@@ -29,7 +29,7 @@ Here are the credentials for the default users.
 You can use these default credentials to generate valid JWTokens at the ../api/account/authenticate endpoint.
 
 ### Google Drive Integration
-To utilize the Google Drive API Integration you will need to obtain json with for OAuth2 authorization
+To utilize the Google Drive API Integration you will need to obtain json with for OAuth2 authorization.
 More details on this here: https://developers.google.com/identity/protocols/oauth2
 
 Simply go through the setup, insert the json file to the root folder of WebAPI project and rename to credentials.json

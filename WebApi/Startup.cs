@@ -24,6 +24,7 @@ namespace WebApi
         }
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             services.AddApplicationLayer();
             services.AddIdentityInfrastructure(_config);
             services.AddPersistenceInfrastructure(_config);
@@ -34,11 +35,15 @@ namespace WebApi
             services.AddHealthChecks();
             services.AddScoped<IAuthenticatedUserService, AuthenticatedUserService>();
             services.AddSingleton<IUploadImageService, UploadImageService>();
-            //services.AddSingleton<IClientService, UploadImageService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors(corsPolicyBuilder => corsPolicyBuilder
+              .WithOrigins("http://localhost:3000")
+              .AllowAnyMethod()
+              .AllowAnyHeader()
+            );
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -55,8 +60,8 @@ namespace WebApi
             app.UseSwaggerExtension();
             app.UseErrorHandlingMiddleware();
             app.UseHealthChecks("/health");
-
-           app.UseEndpoints(endpoints =>
+            
+            app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });

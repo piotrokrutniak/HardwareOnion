@@ -17,6 +17,7 @@ namespace Infrastructure.Persistence.Repositories
         public ProductRepositoryAsync(ApplicationDbContext dbContext) : base(dbContext)
         {
             _products = dbContext.Set<Product>();
+            _products.Include(p => p.Details);
         }
         /*
         public Task<bool> IsUniqueBarcodeAsync(string barcode)

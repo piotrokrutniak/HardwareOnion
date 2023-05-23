@@ -19,12 +19,14 @@ namespace Infrastructure.Persistence
             if (configuration.GetValue<bool>("UseInMemoryDatabase"))
             {
                 services.AddDbContext<ApplicationDbContext>(options =>
-                    options.UseInMemoryDatabase("ApplicationDb"));
+                    options
+                        .UseInMemoryDatabase("ApplicationDb"));
             }
             else
             {
                 services.AddDbContext<ApplicationDbContext>(options =>
-               options.UseSqlServer(
+               options
+                   .UseSqlServer(
                    configuration.GetConnectionString("DefaultConnection"),
                    b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
             }

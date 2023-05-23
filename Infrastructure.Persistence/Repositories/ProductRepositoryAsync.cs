@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Domain.Models.Products;
+using System.Linq;
 
 namespace Infrastructure.Persistence.Repositories
 {
@@ -17,14 +18,26 @@ namespace Infrastructure.Persistence.Repositories
         public ProductRepositoryAsync(ApplicationDbContext dbContext) : base(dbContext)
         {
             _products = dbContext.Set<Product>();
-            _products.Include(p => p.Details);
+            _products.Include(p => p.Details)
+                     .Include(p => p.Manufacturer).ToList();
         }
-        /*
-        public Task<bool> IsUniqueBarcodeAsync(string barcode)
+
+        public async Task<Product> GetByIdAsync(int id)
         {
-            return _products
-                .AllAsync(p => p.Barcode != barcode);
+            return await _products
+                        .Include(p => p.Details)
+                        .Include(m => m.Manufacturer).AsNoTracking()
+                        .FirstAsync(x => x.Id == id);
         }
-        */
+
+        public async Task<IReadOnlyList<Product>> GetPagedReponseAsync(int pageNumber, int pageSize)
+        {
+            return await _products
+                .Include(p => p.Manufacturer)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .AsNoTracking()
+                .ToListAsync();
+        }
     }
 }

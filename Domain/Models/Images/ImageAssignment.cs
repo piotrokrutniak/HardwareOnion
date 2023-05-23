@@ -12,6 +12,6 @@ namespace Domain.Models.Images
         public int TargetId { get; set; }
         public string TargetType { get; set; }
         [JsonIgnore]
-        public Image Image { get; set; }
+        public virtual Image Image { get; set; }
     }
 }

@@ -13,6 +13,6 @@ namespace Domain.Models.Images
         public string ImageType { get; set; }
         public string ImageUrl { get; set;}
         [JsonIgnore]
-        public List<ImageAssignment> ImageAssignments { get; set; }
+        public virtual List<ImageAssignment> ImageAssignments { get; set; }
     }
 }

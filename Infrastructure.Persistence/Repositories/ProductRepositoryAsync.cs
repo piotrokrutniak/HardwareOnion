@@ -30,17 +30,41 @@ namespace Infrastructure.Persistence.Repositories
                         .FirstAsync(x => x.Id == id);
         }
 
-        public async Task<IReadOnlyList<Product>> GetPagedReponseAsync(int pageNumber, int pageSize)
+        public async Task<IReadOnlyList<Product>> GetPagedReponseAsync(int pageNumber, int pageSize, string sortBy = "DateDesc")
         {
-            int count = await _products.CountAsync();
-            int maxPage = GetMaxPage(pageSize, count);
 
-            if (pageNumber > maxPage)
+            switch (sortBy)
             {
-                pageNumber = maxPage;
+                case "PriceAsc":
+                    return await GetProductsPriceAsc(pageNumber, pageSize);
+                case "PriceDesc":
+                    return await GetProductsPriceDesc(pageNumber, pageSize);
+                case "DateAsc":
+                    return await GetProductsDateAsc(pageNumber, pageSize);
+                case "DateDesc":
+                default:
+                    return await GetProductsDateDesc(pageNumber, pageSize);
             }
+        }
 
+        public async Task<int> CountAsync()
+        {
+            return await _products.CountAsync();
+        }
+
+        public int GetMaxPage(int pageSize, int productCount)
+        {
+            double maxPage = Math.Ceiling((float)productCount / (float)pageSize);
+
+            return (int)maxPage;
+        }
+
+        #region Private Ordered Retrieval Methods
+
+        private async Task<IReadOnlyList<Product>> GetProductsDateDesc(int pageNumber, int pageSize)
+        {
             return await _products
+                .OrderByDescending(p => p.Created)
                 .Include(p => p.Manufacturer)
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
@@ -48,13 +72,42 @@ namespace Infrastructure.Persistence.Repositories
                 .ToListAsync();
         }
 
-        private int GetMaxPage(int pageSize, int productCount)
+        private async Task<IReadOnlyList<Product>> GetProductsDateAsc(int pageNumber, int pageSize)
         {
-            double maxPage = Math.Ceiling((float)productCount / (float)pageSize);
-
-            return (int)maxPage;
+            return await _products
+                .OrderBy(p => p.Created)
+                .Include(p => p.Manufacturer)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .AsNoTracking()
+                .ToListAsync();
         }
+
+        private async Task<IReadOnlyList<Product>> GetProductsPriceDesc(int pageNumber, int pageSize)
+        {
+            return await _products
+                .OrderByDescending(p => p.Price)
+                .Include(p => p.Manufacturer)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .AsNoTracking()
+                .ToListAsync();
+        }
+
+        private async Task<IReadOnlyList<Product>> GetProductsPriceAsc(int pageNumber, int pageSize)
+        {
+            return await _products
+                .OrderBy(p => p.Price)
+                .Include(p => p.Manufacturer)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .AsNoTracking()
+                .ToListAsync();
+        }
+
+        #endregion
+
     }
 
-    
+
 }

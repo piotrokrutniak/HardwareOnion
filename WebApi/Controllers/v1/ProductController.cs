@@ -24,7 +24,7 @@ namespace WebApi.Controllers.v1
         public async Task<IActionResult> Get([FromQuery] GetAllProductsParameter filter)
         {
           
-            return Ok(await Mediator.Send(new GetAllProductsQuery() { PageSize = filter.PageSize, PageNumber = filter.PageNumber  }));
+            return Ok(await Mediator.Send(new GetAllProductsQuery() { PageSize = filter.PageSize, PageNumber = filter.PageNumber, OrderBy = filter.OrderBy  }));
         }
 
         // GET api/<controller>/5

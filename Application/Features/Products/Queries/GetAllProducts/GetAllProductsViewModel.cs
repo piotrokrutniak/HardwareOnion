@@ -15,6 +15,7 @@ namespace Application.Features.Products.Queries.GetAllProducts
         public int Quantity { get; set; }
         public int ProductTypeId { get; set; }
         public int ManufacturerId { get; set; }
+        public int LastPage { get; set; }
         public Manufacturer Manufacturer { get; set; }
         public DateTime Created { get; set; }
     }

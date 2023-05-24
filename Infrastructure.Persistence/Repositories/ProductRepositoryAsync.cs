@@ -32,6 +32,14 @@ namespace Infrastructure.Persistence.Repositories
 
         public async Task<IReadOnlyList<Product>> GetPagedReponseAsync(int pageNumber, int pageSize)
         {
+            int count = await _products.CountAsync();
+            int maxPage = GetMaxPage(pageSize, count);
+
+            if (pageNumber > maxPage)
+            {
+                pageNumber = maxPage;
+            }
+
             return await _products
                 .Include(p => p.Manufacturer)
                 .Skip((pageNumber - 1) * pageSize)
@@ -39,5 +47,14 @@ namespace Infrastructure.Persistence.Repositories
                 .AsNoTracking()
                 .ToListAsync();
         }
+
+        private int GetMaxPage(int pageSize, int productCount)
+        {
+            double maxPage = Math.Ceiling((float)productCount / (float)pageSize);
+
+            return (int)maxPage;
+        }
     }
+
+    
 }

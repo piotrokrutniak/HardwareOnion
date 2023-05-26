@@ -30,25 +30,28 @@ namespace Application.Features.Products.Queries.GetAllProducts
         public async Task<PagedResponse<IEnumerable<GetAllProductsViewModel>>> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
         {
             int productCount = await _productRepository.CountAsync();
-            request.PageNumber = ValidatePageNumber(request, productCount);
+            int lastPage = GetMaxPage(request.PageSize, productCount);
+            request.PageNumber = ValidatePageNumber(request, lastPage);
 
             var validFilter = _mapper.Map<GetAllProductsParameter>(request);
             var product = await _productRepository.GetPagedReponseAsync(validFilter.PageNumber,validFilter.PageSize, request.OrderBy);
             var productViewModel = _mapper.Map<IEnumerable<GetAllProductsViewModel>>(product);
-            return new PagedResponse<IEnumerable<GetAllProductsViewModel>>(productViewModel, validFilter.PageNumber, validFilter.PageSize);           
+            return new PagedResponse<IEnumerable<GetAllProductsViewModel>>(productViewModel, validFilter.PageNumber, validFilter.PageSize, lastPage);           
         }
 
-        private int ValidatePageNumber(GetAllProductsQuery request, int productCount)
+        private int ValidatePageNumber(GetAllProductsQuery request, int lastPage)
         {
-            int maxPage = _productRepository.GetMaxPage(request.PageSize, productCount);
-
-            if (request.PageNumber > maxPage)
+            if (request.PageNumber > lastPage)
             {
-                request.PageNumber = maxPage;
+                request.PageNumber = lastPage;
             }
 
             return request.PageNumber;
         }
 
+        private int GetMaxPage(int pageSize, int productCount)
+        {
+            return _productRepository.GetMaxPage(pageSize, productCount);
+        }
     }
 }

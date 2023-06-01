@@ -9,6 +9,6 @@ namespace Domain.Models.Orders
     {
         public string OrderStatus { get; set; }
         public string UserEmail { get; set; }
-        public List<OrderItem> OrderItems { get; set; }
+        public virtual List<OrderItem> OrderItems { get; set; }
     }
 }

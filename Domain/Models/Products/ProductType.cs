@@ -8,8 +8,12 @@ namespace Domain.Models.Products
 {
     public class ProductType : AuditableBaseEntity
     {
+        public ProductType()
+        {
+            Products = new List<Product>();
+        }
+
         public string Name { get; set; }
-        [JsonIgnore]
-        public List<Product> Products { get; set; }
+        public virtual IEnumerable<Product> Products { get; set; }
     }
 }

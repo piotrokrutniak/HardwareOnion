@@ -19,12 +19,14 @@ namespace Infrastructure.Persistence
             if (configuration.GetValue<bool>("UseInMemoryDatabase"))
             {
                 services.AddDbContext<ApplicationDbContext>(options =>
-                    options.UseInMemoryDatabase("ApplicationDb"));
+                    options
+                        .UseInMemoryDatabase("ApplicationDb"));
             }
             else
             {
                 services.AddDbContext<ApplicationDbContext>(options =>
-               options.UseSqlServer(
+               options
+                   .UseSqlServer(
                    configuration.GetConnectionString("DefaultConnection"),
                    b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
             }
@@ -35,6 +37,7 @@ namespace Infrastructure.Persistence
             services.AddTransient<IDetailTypeRepositoryAsync, DetailTypeRepositoryAsync>();
             services.AddTransient<IManufacturerRepositoryAsync, ManufacturerRepositoryAsync>();
             services.AddTransient<IProductDetailRepositoryAsync, ProductDetailRepositoryAsync>();
+            services.AddTransient<IImageRepositoryAsync, ImageRepositoryAsync>();
             #endregion
         }
     }

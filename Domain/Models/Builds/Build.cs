@@ -7,6 +7,6 @@ namespace Domain.Models.Builds
 {
     public class Build : AuditableBaseEntity
     {
-        public List<BuildItem> BuildItems { get; set; }
+        public virtual List<BuildItem> BuildItems { get; set; }
     }
 }

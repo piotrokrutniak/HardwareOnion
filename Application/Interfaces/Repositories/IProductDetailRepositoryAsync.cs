@@ -8,5 +8,6 @@ namespace Application.Interfaces.Repositories
 {
     public interface IProductDetailRepositoryAsync : IGenericRepositoryAsync<ProductDetail>
     {
+        Task<IReadOnlyList<ProductDetail>> GetPagedReponseAsync(int pageNumber, int pageSize, int productId);
     }
 }

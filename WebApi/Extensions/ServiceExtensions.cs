@@ -22,8 +22,8 @@ namespace WebApi.Extensions
                     Description = "This Api will be responsible for overall data distribution and authorization.",
                     Contact = new OpenApiContact
                     {
-                        Name = "piotrokrutniak",
-                        Email = "piotrokrutniak@gmail.com",
+                        Name = "Piotr Okrutniak",
+                        Email = "piotr.okrutniak@microsoft.wsei.edu.pl",
                         Url = new Uri("https://github.com/piotrokrutniak/HardwareOnion"),
                     }
                 });

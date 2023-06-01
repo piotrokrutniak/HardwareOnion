@@ -20,7 +20,7 @@ using System.Threading.Tasks;
 /// PMC project: InfrastructureShared
 /// Startup project: WebApi
 /// dotnet ef migrations add initial -c ApplicationDbContext -s WebApi --project Infrastructure.Persistence
-/// dotnet ef database update -c ApplicationDbContext --project WebApi
+/// dotnet ef database update -c IdentityContext --project WebApi
 ////////////////////////////////////////////////////////////
 
 

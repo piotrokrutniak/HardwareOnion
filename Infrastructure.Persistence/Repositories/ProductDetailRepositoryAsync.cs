@@ -24,6 +24,7 @@ namespace Infrastructure.Persistence.Repositories
         {
             return await _productDetails
                 .Where(x => x.ProductId == productId)
+                .Include(x => x.DetailType)
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .AsNoTracking()

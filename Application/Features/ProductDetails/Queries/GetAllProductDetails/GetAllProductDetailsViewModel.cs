@@ -10,6 +10,7 @@ namespace Application.Features.ProductDetails.Queries.GetAllProductDetails
         public int Id { get; set; }
         public int DetailTypeId { get; set; }
         public string Description { get; set; }
+        public DetailType DetailType { get; set; }
         public int ProductId { get; set; }
 
     }

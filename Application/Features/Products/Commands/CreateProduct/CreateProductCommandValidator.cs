@@ -30,7 +30,7 @@ namespace Application.Features.Products.Commands.CreateProduct
                 .MaximumLength(50).WithMessage("{PropertyName} must not exceed 50 characters.");
 
             RuleFor(p => p.Description)
-                .MaximumLength(200).WithMessage("{PropertyName} must not exceed 200 characters.");
+                .MaximumLength(1000).WithMessage("{PropertyName} must not exceed 1000 characters.");
 
             RuleFor(p => p.Price)
                 .GreaterThanOrEqualTo(0)

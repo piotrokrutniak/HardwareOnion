@@ -16,6 +16,7 @@ using Application.Features.ProductDetails.Queries.GetAllProductDetails;
 using Application.Features.ProductDetails.Commands.CreateProductDetail;
 using Application.Features.Images.Commands;
 using Domain.Models.Images;
+using Application.Features.ProductDetails.Queries.GetProductDetailsByProductId;
 
 namespace Application.Mappings
 {
@@ -42,6 +43,7 @@ namespace Application.Mappings
             CreateMap<ProductDetail, GetAllProductDetailsViewModel>().ReverseMap();
             CreateMap<CreateProductDetailCommand, ProductDetail>();
             CreateMap<GetAllProductDetailsQuery, GetAllProductDetailsParameter>();
+            CreateMap<GetAllProductDetailsByProductIdQuery, GetAllProductDetailsByProductIdParameter>();
 
             CreateMap<CreateImageCommand, Image>();
         }

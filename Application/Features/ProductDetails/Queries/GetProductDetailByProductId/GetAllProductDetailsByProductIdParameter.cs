@@ -5,8 +5,8 @@ using System.Text;
 
 namespace Application.Features.ProductDetails.Queries.GetAllProductDetails
 {
-    public class GetAllProductDetailsParameter : RequestParameter
+    public class GetAllProductDetailsByProductIdParameter : RequestParameter
     {
-        public int Id { get; set; }
+        public int ProductId { get; set; }
     }
 }

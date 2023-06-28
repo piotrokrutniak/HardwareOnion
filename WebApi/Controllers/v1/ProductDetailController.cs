@@ -10,6 +10,8 @@ using Application.Features.ProductDetails.Queries.GetAllProductDetails;
 using Application.Features.ProductDetails.Queries.GetProductDetailById;
 using Application.Features.ProductDetails.Commands.CreateProductDetail;
 using Application.Features.ProductDetails.Commands.UpdateProductDetail;
+using Application.Features.ProductDetails.Queries.GetProductDetailsByProductId;
+
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -22,8 +24,14 @@ namespace WebApi.Controllers.v1
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery] GetAllProductDetailsParameter filter)
         {
-          
             return Ok(await Mediator.Send(new GetAllProductDetailsQuery() { PageSize = filter.PageSize, PageNumber = filter.PageNumber  }));
+        }
+
+        // GET: api/<controller>
+        [HttpGet("ByProductId")]
+        public async Task<IActionResult> Get([FromQuery] GetAllProductDetailsByProductIdParameter filter)
+        {
+            return Ok(await Mediator.Send(new GetAllProductDetailsByProductIdQuery() { PageSize = filter.PageSize, PageNumber = filter.PageNumber, ProductId = filter.ProductId }));
         }
 
         // GET api/<controller>/5

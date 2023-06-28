@@ -18,5 +18,6 @@ namespace Application.Features.Products.Queries.GetAllProducts
         public int LastPage { get; set; }
         public Manufacturer Manufacturer { get; set; }
         public DateTime Created { get; set; }
+        public DateTime? LastModified { get; set; }
     }
 }

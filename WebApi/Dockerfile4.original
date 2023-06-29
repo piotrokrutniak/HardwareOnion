@@ -7,21 +7,21 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["WebApi/CatalogueWebApi.csproj", "WebApi/"]
+COPY ["WebApi/WebApi.csproj", "WebApi/"]
 COPY ["Application/Application.csproj", "Application/"]
 COPY ["Domain/Domain.csproj", "Domain/"]
 COPY ["Infrastructure.Identity/Infrastructure.Identity.csproj", "Infrastructure.Identity/"]
 COPY ["Infrastructure.Persistence/Infrastructure.Persistence.csproj", "Infrastructure.Persistence/"]
 COPY ["Infrastructure.Shared/Infrastructure.Shared.csproj", "Infrastructure.Shared/"]
-RUN dotnet restore "WebApi/CatalogueWebApi.csproj"
+RUN dotnet restore "WebApi/WebApi.csproj"
 COPY . .
 WORKDIR "/src/WebApi"
-RUN dotnet build "CatalogueWebApi.csproj" -c Release -o /app/build
+RUN dotnet build "WebApi.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "CatalogueWebApi.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "WebApi.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "CatalogueWebApi.dll"]
+ENTRYPOINT ["dotnet", "WebApi.dll"]

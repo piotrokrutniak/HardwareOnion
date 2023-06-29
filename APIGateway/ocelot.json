@@ -1,0 +1,140 @@
+{
+  "Routes": [
+    //Catalogue Web API
+    //Product
+    {
+      "UpstreamPathTemplate": "/api/Product",
+      "UpstreamHttpMethod": [ "GET", "POST", "OPTIONS" ],
+      "DownstreamPathTemplate": "/api/Product",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "host": "localhost",
+          "Port": 80
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/api/Product/{id}",
+      "UpstreamHttpMethod": [ "GET", "PUT", "DELETE", "OPTIONS" ],
+      "DownstreamPathTemplate": "/api/Product/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "host": "localhost",
+          "Port": 80
+        }
+      ]
+    },
+    //DetailType
+    {
+      "UpstreamPathTemplate": "/api/DetailType",
+      "UpstreamHttpMethod": [ "GET", "POST", "OPTIONS" ],
+      "DownstreamPathTemplate": "/api/Product",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "host": "localhost",
+          "Port": 80
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/api/DetailType/{id}",
+      "UpstreamHttpMethod": [ "GET", "PUT", "DELETE", "OPTIONS" ],
+      "DownstreamPathTemplate": "/api/DetailType/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "host": "localhost",
+          "Port": 80
+        }
+      ]
+    },
+    //Manufacturer
+    {
+      "UpstreamPathTemplate": "/api/Manufacturer",
+      "UpstreamHttpMethod": [ "GET", "POST", "OPTIONS" ],
+      "DownstreamPathTemplate": "/api/Product",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "host": "localhost",
+          "Port": 80
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/api/Manufacturer/{id}",
+      "UpstreamHttpMethod": [ "GET", "PUT", "DELETE", "OPTIONS" ],
+      "DownstreamPathTemplate": "/api/Manufacturer/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "host": "localhost",
+          "Port": 80
+        }
+      ]
+    },
+    //ProductType
+    {
+      "UpstreamPathTemplate": "/api/ProductType",
+      "UpstreamHttpMethod": [ "GET", "POST", "OPTIONS" ],
+      "DownstreamPathTemplate": "/api/Product",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "host": "localhost",
+          "Port": 80
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/api/ProductType/{id}",
+      "UpstreamHttpMethod": [ "GET", "PUT", "DELETE", "OPTIONS" ],
+      "DownstreamPathTemplate": "/api/ProductType/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "host": "localhost",
+          "Port": 80
+        }
+      ]
+    },
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:4000",
+
+  }
+}
+
+/*
+{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/api/catalogue",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "host": "localhost",
+          "Port": "9001"
+        }
+      ],
+      "UpstreamPathTemplate": "/catalogue",
+      "UpstreamHttpMethod": [ "GET", "PUT", "DELETE", "OPTIONS" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/images",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "host": "localhost",
+          "Port": "9002"
+        }
+      ],
+      "UpstreamPathTemplate": "/images",
+      "UpstreamHttpMethod": [ "GET", "PUT", "DELETE", "OPTIONS" ]
+    }
+  ]
+}
+*/

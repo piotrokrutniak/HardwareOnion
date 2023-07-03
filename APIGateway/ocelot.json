@@ -1,7 +1,43 @@
 {
   "Routes": [
     //Catalogue Web API
-    //Product
+
+    //Identity
+    {
+      "UpstreamPathTemplate": "/api/Account/{everything}",
+      "UpstreamHttpMethod": [ "POST", "GET", "PUT", "OPTIONS" ],
+      "DownstreamPathTemplate": "/api/Account/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "host.docker.internal",
+          "Port": 65447
+        }
+      ]
+    },
+    //Catalogue
+    {
+      "UpstreamPathTemplate": "/api/v1/{everything}",
+      "UpstreamHttpMethod": [ "POST", "GET", "PUT", "OPTIONS" ],
+      "DownstreamPathTemplate": "/api/Account/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "host.docker.internal",
+          "Port": 65447
+        }
+      ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:8001"
+
+  }
+}
+
+
+/*
+  //Product
     {
       "UpstreamPathTemplate": "/api/Product",
       "UpstreamHttpMethod": [ "GET", "POST", "OPTIONS" ],
@@ -9,7 +45,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "host": "localhost",
+          "host": "cataloguewebapi",
           "Port": 80
         }
       ]
@@ -21,7 +57,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "host": "localhost",
+          "host": "cataloguewebapi",
           "Port": 80
         }
       ]
@@ -34,7 +70,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "host": "localhost",
+          "host": "cataloguewebapi",
           "Port": 80
         }
       ]
@@ -46,7 +82,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "host": "localhost",
+          "host": "cataloguewebapi",
           "Port": 80
         }
       ]
@@ -59,7 +95,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "host": "localhost",
+          "host": "cataloguewebapi",
           "Port": 80
         }
       ]
@@ -71,7 +107,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "host": "localhost",
+          "host": "cataloguewebapi",
           "Port": 80
         }
       ]
@@ -84,7 +120,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "host": "localhost",
+          "host": "cataloguewebapi",
           "Port": 80
         }
       ]
@@ -96,17 +132,12 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "host": "localhost",
+          "host": "cataloguewebapi",
           "Port": 80
         }
       ]
     },
-  ],
-  "GlobalConfiguration": {
-    "BaseUrl": "http://localhost:4000",
-
-  }
-}
+*/
 
 /*
 {

@@ -12,6 +12,16 @@ namespace Domain.Models.Products
         {
             Details = new List<ProductDetail>();
         }
+
+        public Product(string name, string description, decimal price, int quantity, int productTypeId, int manufacturerId)
+        {
+            Name = name;
+            Description = description;
+            Price = price;
+            Quantity = quantity;
+            ProductTypeId = productTypeId;
+            ManufacturerId = manufacturerId;
+        }
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }

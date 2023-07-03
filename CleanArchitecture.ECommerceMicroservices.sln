@@ -49,6 +49,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Source\Microservi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Source\Microservices\ImagesHost\Core\Application\Application.csproj", "{AF4164AA-10AF-4ACB-B6EC-5738A01AE0B5}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{1231D084-EECE-482B-AC98-713E24F6ACE5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +97,10 @@ Global
 		{AF4164AA-10AF-4ACB-B6EC-5738A01AE0B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF4164AA-10AF-4ACB-B6EC-5738A01AE0B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF4164AA-10AF-4ACB-B6EC-5738A01AE0B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1231D084-EECE-482B-AC98-713E24F6ACE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1231D084-EECE-482B-AC98-713E24F6ACE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1231D084-EECE-482B-AC98-713E24F6ACE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1231D084-EECE-482B-AC98-713E24F6ACE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

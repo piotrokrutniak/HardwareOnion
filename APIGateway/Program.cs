@@ -1,17 +1,31 @@
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 
-var builder = WebApplication.CreateBuilder(args);
+public class Program
+{
+    private static async Task Main(string[] args)
+    {
+        var builder = WebApplication.CreateBuilder(args);
 
-builder.Configuration.SetBasePath(Directory.GetCurrentDirectory())
-    .AddJsonFile("ocelot.json", optional: false, reloadOnChange: true)
-    .AddEnvironmentVariables();
+        builder.Configuration.SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("ocelot.json", optional: false, reloadOnChange: true)
+            .AddEnvironmentVariables();
 
-//Services
-builder.Services.AddOcelot(builder.Configuration);
+        //Services
+        builder.Services.AddOcelot(builder.Configuration);
+        builder.Services.AddCors();
 
-var app = builder.Build();
+        var app = builder.Build();
 
-await app.UseOcelot();
+        app.UseCors(corsPolicyBuilder => corsPolicyBuilder
+                      .WithOrigins("http://localhost:3000")
+                      .AllowAnyMethod()
+                      .AllowAnyHeader()
+                    );
 
-app.Run();
+        await app.UseOcelot();
+
+
+        app.Run();
+    }
+}

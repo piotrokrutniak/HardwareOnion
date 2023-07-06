@@ -6,7 +6,7 @@ using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.Features.Products.Commands.CreateProduct
+namespace Application.Features.Orders.Commands.CreateProduct
 {
     public partial class CreateProductCommand : IRequest<Response<int>>
     {

@@ -1,9 +1,10 @@
-﻿using Domain.Common;
-using Domain.Models.Entities;
+﻿using Domain.Models.Entities;
 using System.Text.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Domain.Models.Common;
+
 namespace Domain.Models.Products
 {
     public class Product : AuditableBaseEntity

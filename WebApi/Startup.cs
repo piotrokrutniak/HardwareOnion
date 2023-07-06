@@ -44,6 +44,8 @@ namespace WebApi
             
             app.UseCors(corsPolicyBuilder => corsPolicyBuilder
               .WithOrigins("http://localhost:3000")
+              //For order micro service
+              //.WithOrigins("")
               .AllowAnyMethod()
               .AllowAnyHeader()
             );

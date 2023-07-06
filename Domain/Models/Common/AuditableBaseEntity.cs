@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Domain.Common
+namespace Domain.Models.Common
 {
     public abstract class AuditableBaseEntity
     {

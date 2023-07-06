@@ -1,4 +1,4 @@
-﻿using Domain.Common;
+﻿using Domain.Models.Common;
 using Domain.Models.Products;
 using System;
 using System.Collections.Generic;

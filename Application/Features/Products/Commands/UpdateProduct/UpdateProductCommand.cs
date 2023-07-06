@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.Features.Products.Commands.UpdateProduct
+namespace Application.Features.Orders.Commands.UpdateProduct
 {
     public class UpdateProductCommand : IRequest<Response<int>>
     {

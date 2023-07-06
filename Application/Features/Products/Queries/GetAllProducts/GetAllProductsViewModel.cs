@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Application.Features.Products.Queries.GetAllProducts
+namespace Application.Features.Orders.Queries.GetAllOrders
 {
     public class GetAllProductsViewModel
     {

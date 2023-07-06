@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.Features.Products.Queries.GetProductById
+namespace Application.Features.Orders.Queries.GetProductById
 {
     public class GetProductByIdQuery : IRequest<Response<Product>>
     {

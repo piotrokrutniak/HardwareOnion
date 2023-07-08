@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="D:\Users\Piotrek\source\repos\HardwareOnion\Application\Application.csproj" />
+    <ProjectReference Include="I:\STUDIA\23 S1\Source\Microservices\Basket\Core\Application\Application.csproj" />
   </ItemGroup>
 
 </Project>

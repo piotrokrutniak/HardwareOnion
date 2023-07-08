@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="D:\Users\Piotrek\source\repos\HardwareOnion\Domain\Domain.csproj" />
+    <ProjectReference Include="I:\STUDIA\23 S1\Source\Microservices\Basket\Core\Domain\Domain.csproj" />
   </ItemGroup>
 
 </Project>

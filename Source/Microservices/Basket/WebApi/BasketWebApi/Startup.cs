@@ -4,7 +4,14 @@ using Infrastructure.Persistence;
 using Infrastructure.Shared;
 using System.Text.Json.Serialization;
 using WebApi.Extensions;
-
+using Application.Interfaces;
+using Application.Interfaces.Repositories;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using WebApi.Services;
 
 namespace WebApi
 {

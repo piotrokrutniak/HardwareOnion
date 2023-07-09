@@ -14,7 +14,6 @@ namespace WebApi.Services
         {
             UserId = httpContextAccessor.HttpContext?.User?.FindFirstValue("uid");
         }
-
         public string UserId { get; }
     }
 }

@@ -12,6 +12,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WebApi.Services;
+using Infrastructure.Persistence.Contexts;
+using Infrastructure.Shared.Services;
 
 namespace WebApi
 {
@@ -26,11 +28,15 @@ namespace WebApi
         {
             services.AddApplicationLayer();
             services.AddCors();
+            //services.AddSharedInfrastructure(_config);
+            services.AddTransient<IDateTimeService, DateTimeService>();
+            services.AddIdentityLayer(_config);
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddTransient<IAuthenticatedUserService, AuthenticatedUserService>();
             services.AddPersistenceInfrastructure(_config);
-            services.AddSharedInfrastructure(_config);
+            services.AddTransient<ApplicationDbContext>();
             services.AddSwaggerExtension();
             services.AddApiVersioningExtension();
-            services.AddIdentityLayer(_config);
             services.AddControllers()
                     .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
             services.AddHealthChecks();

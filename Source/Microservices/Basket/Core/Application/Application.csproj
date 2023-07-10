@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="C:\Repository\WSEI\HardwareOnion\Source\Microservices\Basket\Core\Domain\Domain.csproj" />
+    <ProjectReference Include="..\..\Core\Domain\Domain.csproj" />
   </ItemGroup>
 
 </Project>

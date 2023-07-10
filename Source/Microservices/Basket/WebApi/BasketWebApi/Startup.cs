@@ -26,6 +26,7 @@ namespace WebApi
         }
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddApplicationLayer();
             services.AddCors();
             //services.AddSharedInfrastructure(_config);

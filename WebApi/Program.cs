@@ -13,6 +13,9 @@ using Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
 using Infrastructure.Identity.Models;
 using Microsoft.Extensions.DependencyInjection;
+using Infrastructure.Persistence.Repositories;
+using Domain.Models.Entities;
+using Application.Interfaces.Repositories;
 
 namespace WebApi
 {
@@ -38,10 +41,21 @@ namespace WebApi
                 {
                     var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
                     var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+                    var manufacturerRepositoryAsync = services.GetRequiredService<IManufacturerRepositoryAsync>();
+                    var productRepositoryAsync = services.GetRequiredService<IProductRepositoryAsync>();
+                    var productDetailRepositoryAsync = services.GetRequiredService<IProductDetailRepositoryAsync>();
+                    var productTypeRepositoryAsync = services.GetRequiredService<IProductTypeRepositoryAsync>();
+                    var detailTypeRepositoryAsync = services.GetRequiredService<IDetailTypeRepositoryAsync>();
 
                     await Infrastructure.Identity.Seeds.DefaultRoles.SeedAsync(userManager, roleManager);
                     await Infrastructure.Identity.Seeds.DefaultSuperAdmin.SeedAsync(userManager, roleManager);
                     await Infrastructure.Identity.Seeds.DefaultBasicUser.SeedAsync(userManager, roleManager);
+                    await Infrastructure.Persistence.Seeds.DefaultManufacturers.SeedAsync(manufacturerRepositoryAsync);
+                    await Infrastructure.Persistence.Seeds.DefaultProductTypes.SeedAsync(productTypeRepositoryAsync);
+                    await Infrastructure.Persistence.Seeds.DefaultProducts.SeedAsync(productRepositoryAsync);
+                    await Infrastructure.Persistence.Seeds.DefaultDetailTypes.SeedAsync(detailTypeRepositoryAsync);
+                    await Infrastructure.Persistence.Seeds.DefaultProductDetails.SeedAsync(productDetailRepositoryAsync, productRepositoryAsync, productTypeRepositoryAsync);
+
                     Log.Information("Finished Seeding Default Data");
                     Log.Information("Application Starting");
                     host.Run();

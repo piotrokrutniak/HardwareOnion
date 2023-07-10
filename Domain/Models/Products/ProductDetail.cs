@@ -1,4 +1,4 @@
-﻿using Domain.Common;
+﻿using Domain.Models.Common;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,6 +8,12 @@ namespace Domain.Models.Products
 {
     public class ProductDetail : AuditableBaseEntity
     {
+        public ProductDetail(int detailTypeId, string description, int productId) 
+        {
+            DetailTypeId = detailTypeId;
+            Description = description;
+            ProductId = productId;
+        }
         public int DetailTypeId { get; set; }
         public string Description { get; set; }
         public int ProductId { get; set; }

@@ -1,4 +1,4 @@
-﻿using Domain.Common;
+﻿using Domain.Models.Common;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,6 +11,11 @@ namespace Domain.Models.Products
         public ProductType()
         {
             Products = new List<Product>();
+        }
+
+        public ProductType(string name)
+        {
+            Name = name;
         }
 
         public string Name { get; set; }

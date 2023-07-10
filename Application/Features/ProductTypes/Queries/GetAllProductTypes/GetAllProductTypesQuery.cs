@@ -1,4 +1,4 @@
-﻿using Application.Features.Products.Queries.GetAllProducts;
+﻿using Application.Features.Orders.Queries.GetAllOrders;
 using Application.Filters;
 using Application.Interfaces.Repositories;
 using Application.Wrappers;

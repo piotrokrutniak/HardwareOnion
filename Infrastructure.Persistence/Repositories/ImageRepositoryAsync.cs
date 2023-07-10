@@ -17,6 +17,6 @@ namespace Infrastructure.Persistence.Repositories
         public ImageRepositoryAsync(ApplicationDbContext dbContext) : base(dbContext)
         {
             _images = dbContext.Set<Image>();
-        }
     }
+        }
 }

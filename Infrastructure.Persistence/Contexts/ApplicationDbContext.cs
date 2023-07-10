@@ -1,6 +1,6 @@
 ﻿using Application.Interfaces;
-using Domain.Common;
 using Domain.Models.Builds;
+using Domain.Models.Common;
 using Domain.Models.Discounts;
 using Domain.Models.Entities;
 using Domain.Models.Images;
@@ -47,8 +47,6 @@ namespace Infrastructure.Persistence.Contexts
         public DbSet<ProductType> ProductTypes { get; set; }
         public DbSet<ProductDetail> ProductDetails { get; set; }
         public DbSet<DetailType> DetailTypes { get; set; }
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Manufacturer> Manufacturers { get; set; }
         public DbSet<Build> Builds { get; set; }
         public DbSet<BuildItem> BuildItems { get; set; }
@@ -65,7 +63,7 @@ namespace Infrastructure.Persistence.Contexts
                 {
                     case EntityState.Added:
                         entry.Entity.Created = _dateTime.NowUtc;
-                        entry.Entity.CreatedBy = _authenticatedUser.UserId;
+                         entry.Entity.CreatedBy = _authenticatedUser.UserId;
                         break;
                     case EntityState.Modified:
                         entry.Entity.LastModified = _dateTime.NowUtc;

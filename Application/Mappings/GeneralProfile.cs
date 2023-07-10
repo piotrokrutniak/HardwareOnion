@@ -1,5 +1,5 @@
-﻿using Application.Features.Products.Commands.CreateProduct;
-using Application.Features.Products.Queries.GetAllProducts;
+﻿using Application.Features.Orders.Commands.CreateProduct;
+using Application.Features.Orders.Queries.GetAllOrders;
 using Application.Features.ProductTypes.Queries.GetAllProductTypes;
 using Application.Features.ProductTypes.Commands.CreateProductType;
 using AutoMapper;

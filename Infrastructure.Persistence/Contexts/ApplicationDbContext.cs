@@ -63,7 +63,7 @@ namespace Infrastructure.Persistence.Contexts
                 {
                     case EntityState.Added:
                         entry.Entity.Created = _dateTime.NowUtc;
-                         entry.Entity.CreatedBy = _authenticatedUser.UserId;
+                        entry.Entity.CreatedBy = _authenticatedUser.UserId;
                         break;
                     case EntityState.Modified:
                         entry.Entity.LastModified = _dateTime.NowUtc;

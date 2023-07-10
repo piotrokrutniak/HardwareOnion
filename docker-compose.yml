@@ -29,3 +29,15 @@ services:
         - backend
 
 
+
+  basketwebapi:
+    container_name: basket-api
+    image: ${DOCKER_REGISTRY-}basketwebapi
+    ports:
+        - 45003:80
+    build:
+      context: .
+      dockerfile: Source/Microservices/Basket/WebApi/BasketWebApi/Dockerfile
+    networks:
+        - backend
+

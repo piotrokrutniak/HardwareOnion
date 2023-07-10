@@ -1,7 +1,6 @@
 {
   "Routes": [
     //Catalogue Web API
-
     //Identity
     {
       "UpstreamPathTemplate": "/api/Account/{everything}",
@@ -15,16 +14,95 @@
         }
       ]
     },
-    //Catalogue
+    //Catalogue Product
     {
-      "UpstreamPathTemplate": "/api/v1/{everything}",
+      "UpstreamPathTemplate": "/api/v1/Product",
       "UpstreamHttpMethod": [ "POST", "GET", "PUT", "OPTIONS" ],
-      "DownstreamPathTemplate": "/api/Account/{everything}",
+      "DownstreamPathTemplate": "/api/v1/Product",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "host.docker.internal",
           "Port": 65447
+        }
+      ]
+    },
+    //Catalogue Product Type
+    {
+      "UpstreamPathTemplate": "/api/v1/ProductType",
+      "UpstreamHttpMethod": [ "POST", "GET", "PUT", "OPTIONS" ],
+      "DownstreamPathTemplate": "/api/v1/ProductType",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "host.docker.internal",
+          "Port": 65447
+        }
+      ]
+    },
+    //Catalogue Product Detail
+    {
+      "UpstreamPathTemplate": "/api/v1/ProductDetail",
+      "UpstreamHttpMethod": [ "POST", "GET", "PUT", "OPTIONS" ],
+      "DownstreamPathTemplate": "/api/v1/ProductDetail",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "host.docker.internal",
+          "Port": 65447
+        }
+      ]
+    },
+    //Catalogue Detail Type
+    {
+      "UpstreamPathTemplate": "/api/v1/DetailType",
+      "UpstreamHttpMethod": [ "POST", "GET", "PUT", "OPTIONS" ],
+      "DownstreamPathTemplate": "/api/v1/DetailType",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "host.docker.internal",
+          "Port": 65447
+        }
+      ]
+    },
+    //Catalogue Manufacturer
+    {
+      "UpstreamPathTemplate": "/api/v1/Manufacturer",
+      "UpstreamHttpMethod": [ "POST", "GET", "PUT", "OPTIONS" ],
+      "DownstreamPathTemplate": "/api/v1/Manufacturer",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "host.docker.internal",
+          "Port": 65447
+        }
+      ]
+    },
+    //Basket Web API
+    //Basket Order
+    {
+      "UpstreamPathTemplate": "/api/v1/Order",
+      "UpstreamHttpMethod": [ "POST", "GET", "PUT", "OPTIONS" ],
+      "DownstreamPathTemplate": "/api/v1/Order",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "host.docker.internal",
+          "Port": 45003
+        }
+      ]
+    },
+    //Basket OrderItem
+    {
+      "UpstreamPathTemplate": "/api/v1/OrderItem",
+      "UpstreamHttpMethod": [ "POST", "GET", "PUT", "OPTIONS" ],
+      "DownstreamPathTemplate": "/api/v1/OrderItem",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "host.docker.internal",
+          "Port": 45003
         }
       ]
     }

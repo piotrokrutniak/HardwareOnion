@@ -8,11 +8,12 @@ namespace Application.Filters
     {
         public int PageNumber { get; set; }
         public int PageSize { get; set; }
-        public string OrderBy { get; set; }
+        public string? OrderBy { get; set; }
         public RequestParameter()
         {
             this.PageNumber = 1;
             this.PageSize = 10;
+            this.OrderBy = "Default";
         }
         public RequestParameter(int pageNumber, int pageSize)
         {

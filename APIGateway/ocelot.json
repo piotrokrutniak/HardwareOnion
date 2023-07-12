@@ -14,11 +14,24 @@
         }
       ]
     },
-    //Catalogue Product
+    //Catalogue Products
     {
       "UpstreamPathTemplate": "/api/v1/Product",
       "UpstreamHttpMethod": [ "POST", "GET", "PUT", "OPTIONS" ],
       "DownstreamPathTemplate": "/api/v1/Product",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "host.docker.internal",
+          "Port": 65447
+        }
+      ]
+    },
+    //Catalogue Product by Id
+    {
+      "UpstreamPathTemplate": "/api/v1/Product/{everything}",
+      "UpstreamHttpMethod": [ "POST", "GET", "PUT", "OPTIONS" ],
+      "DownstreamPathTemplate": "/api/v1/Product/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -45,6 +58,19 @@
       "UpstreamPathTemplate": "/api/v1/ProductDetail",
       "UpstreamHttpMethod": [ "POST", "GET", "PUT", "OPTIONS" ],
       "DownstreamPathTemplate": "/api/v1/ProductDetail",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "host.docker.internal",
+          "Port": 65447
+        }
+      ]
+    },
+    //Catalogue Product by Id
+    {
+      "UpstreamPathTemplate": "/api/v1/ProductDetail/ByProductId",
+      "UpstreamHttpMethod": [ "POST", "GET", "PUT", "OPTIONS" ],
+      "DownstreamPathTemplate": "/api/v1/ProductDetail/ByProductId",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {

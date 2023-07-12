@@ -24,7 +24,7 @@ namespace Application.Features.DetailTypes.Queries.GetDetailTypeById
             public async Task<Response<DetailType>> Handle(GetDetailTypesByIdQuery query, CancellationToken cancellationToken)
             {
                 var detailType = await _detailTypeRepository.GetByIdAsync(query.Id);
-                if (detailType == null) throw new ApiException($"Detail Type Not Found.");
+                if (detailType == null) throw new ApiException($"Detail Types For The Product Id Not Found.");
                 return new Response<DetailType>(detailType);
             }
         }

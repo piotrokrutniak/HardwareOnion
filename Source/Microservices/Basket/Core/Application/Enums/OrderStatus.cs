@@ -6,6 +6,7 @@ namespace Application.Enums
 {
     public enum OrderStatus
     {
+        Basket,
         New,
         Abandoned,
         Pending,

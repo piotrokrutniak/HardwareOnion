@@ -15,7 +15,7 @@ namespace Application.Features.Orders.Queries.GetAllOrders
     {
         public int PageNumber { get; set; }
         public int PageSize { get; set; }
-        public string OrderBy { get; set; }
+        public string? OrderBy { get; set; }
     }
     public class GetAllProductsQueryHandler : IRequestHandler<GetAllProductsQuery, PagedResponse<IEnumerable<GetAllProductsViewModel>>>
     {

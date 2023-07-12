@@ -7,6 +7,7 @@ using Application.Features.Orders.Commands.CreateOrder;
 using Application.Features.Orders.Commands.UpdateOrder;
 using Application.Features.Orders.Queries.GetAllOrders;
 using Application.Features.Orders.Queries.GetOrderById;
+using Application.Features.Orders.Queries.GetUserBasket;
 using Application.Filters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -23,7 +24,7 @@ namespace WebApi.Controllers.v1
         public async Task<IActionResult> Get([FromQuery] GetAllOrdersParameter filter)
         {
           
-            return Ok(await Mediator.Send(new GetAllOrdersQuery() { PageSize = filter.PageSize, PageNumber = filter.PageNumber, OrderBy = filter.OrderBy  }));
+            return Ok(await Mediator.Send(new GetAllOrdersQuery() { PageSize = filter.PageSize, PageNumber = filter.PageNumber, OrderBy = filter.OrderBy ?? "Default"  }));
         }
 
         // GET api/<controller>/5
@@ -32,6 +33,14 @@ namespace WebApi.Controllers.v1
         {
             return Ok(await Mediator.Send(new GetOrderByIdQuery { Id = id }));
         }
+
+        [HttpGet("GetBasket/{email}")]
+        public async Task<IActionResult> Get(string email)
+        {
+            return Ok(await Mediator.Send(new GetUserBasketQuery { UserEmail = email }));
+        }
+
+
 
         // POST api/<controller>
         [HttpPost]

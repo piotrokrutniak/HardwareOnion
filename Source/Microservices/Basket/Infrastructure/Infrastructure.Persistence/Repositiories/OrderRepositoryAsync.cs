@@ -20,11 +20,26 @@ namespace Infrastructure.Persistence.Repositiories
             _orders.Include(p => p.OrderItems).ToList();
         }
 
-        public async Task<Order> GetByIdAsync(int id)
+        public override async Task<Order> GetByIdAsync(int id)
         {
             return await _orders
                         .Include(p => p.OrderItems).AsNoTracking()
                         .FirstAsync(x => x.Id == id);
+        }
+
+        public async Task<Order> GetUserBasketAsync(string email)
+        {
+            return await _orders
+                        .Where(x => x.OrderStatus == "Basket")
+                        .Include(p => p.OrderItems).AsNoTracking()
+                        .FirstAsync(x => x.UserEmail == email);
+        }
+
+        public async Task<Order> GetByEmailAsync(string email)
+        {
+            return await _orders
+                        .Include(p => p.OrderItems).AsNoTracking()
+                        .FirstAsync(x => x.UserEmail == email);
         }
 
         public async Task<IReadOnlyList<Order>> GetPagedReponseAsync(int pageNumber, int pageSize, string sortBy = "DateDesc")

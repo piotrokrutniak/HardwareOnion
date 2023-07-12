@@ -29,7 +29,7 @@ namespace Application.Features.OrderItems.Queries.GetAllOrderItems
 
         public async Task<PagedResponse<IEnumerable<GetAllOrderItemsViewModel>>> Handle(GetAllOrderItemsQuery request, CancellationToken cancellationToken)
         {
-            var validFilter = _mapper.Map<GetAllOrderItemsByOrderIdParameter>(request);
+            var validFilter = _mapper.Map<GetAllOrderItemsParameter>(request);
             var orderItem = await _orderItemRepository.GetPagedReponseAsync(validFilter.PageNumber,validFilter.PageSize);
             var orderItemViewModel = _mapper.Map<IEnumerable<GetAllOrderItemsViewModel>>(orderItem);
             return new PagedResponse<IEnumerable<GetAllOrderItemsViewModel>>(orderItemViewModel, validFilter.PageNumber, validFilter.PageSize);           

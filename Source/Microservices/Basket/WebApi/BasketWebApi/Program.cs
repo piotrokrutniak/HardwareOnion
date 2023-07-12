@@ -35,10 +35,10 @@ namespace WebApi
                 try
                 {
                     //var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
-                    //var orderRepositoryAsync = services.GetRequiredService<IOrderRepositoryAsync>();
+                    var orderRepositoryAsync = services.GetRequiredService<IOrderRepositoryAsync>();
                     //var orderItemRepositoryAsync = services.GetRequiredService<IOrderItemRepositoryAsync>();
 
-                    //await Infrastructure.Persistence.Seeds.DefaultOrders.SeedAsync(orderRepositoryAsync);
+                    await Infrastructure.Persistence.Seeds.DefaultOrders.SeedAsync(orderRepositoryAsync);
                     //await Infrastructure.Persistence.Seeds.DefaultOrderItems.SeedAsync(orderItemRepositoryAsync, orderRepositoryAsync);
 
                     Log.Information("Finished Seeding Default Data");

@@ -10,6 +10,8 @@ namespace Application.Interfaces.Repositories
     {
         Task<int> CountAsync();
         Task<IReadOnlyList<Order>> GetPagedReponseAsync(int pageNumber, int pageSize, string sortBy = "DateDesc");
+        Task<Order> GetUserBasketAsync(string email);
+        Task<Order> GetByEmailAsync(string email);
         int GetMaxPage(int pageSize, int orderCount);
     }
 }
